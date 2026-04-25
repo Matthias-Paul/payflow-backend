@@ -11,6 +11,10 @@ export default registerAs('database', () => ({
     rejectUnauthorized: false, 
   },
   password: process.env.DB_PASSWORD,
+   synchronize:
+    process.env.DB_SYNC !== undefined
+      ? process.env.DB_SYNC === 'true'
+      : process.env.NODE_ENV !== 'production',
   autoLoadEntities:
     process.env.DB_AUTO_LOAD !== undefined
       ? process.env.DB_AUTO_LOAD === 'true'

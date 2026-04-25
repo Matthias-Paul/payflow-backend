@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -29,7 +30,7 @@ import { UserModule } from './user/user.module';
           'database.autoLoadEntities',
         ),
       }),
-    }), UserModule,
+    }), UserModule, AuthModule,
 ],   
   controllers: [],
   providers: [],
