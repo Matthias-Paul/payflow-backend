@@ -5,14 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 
-
 @Module({
-  imports:[ ConfigModule.forRoot({
+  imports: [
+    ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
       load: [databaseConfig],
-  }),  
-  TypeOrmModule.forRootAsync({
+    }),
+    TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
@@ -23,15 +23,17 @@ import { AuthModule } from './auth/auth.module';
         password: configService.get<string>('database.password') || '',
         database: configService.get<string>('database.name'),
         synchronize: configService.get<boolean>('database.synchronize'),
-        ssl: {                      
+        ssl: {
           rejectUnauthorized: false,
         },
         autoLoadEntities: configService.get<boolean>(
           'database.autoLoadEntities',
         ),
       }),
-    }), UserModule, AuthModule,
-],   
+    }),
+    UserModule,
+    AuthModule,
+  ],
   controllers: [],
   providers: [],
 })

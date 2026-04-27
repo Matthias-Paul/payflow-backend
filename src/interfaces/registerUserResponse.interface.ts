@@ -1,6 +1,7 @@
-import { User } from "../entity/user.entity";
+import { User } from '../user/entity/user.entity';
 
 export interface RegisterUserResponse {
   data: User;
+  token: string;
   message: string;
 }
