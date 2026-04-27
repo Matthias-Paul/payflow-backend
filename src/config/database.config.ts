@@ -1,4 +1,3 @@
-
 import { registerAs } from '@nestjs/config';
 
 export default registerAs('database', () => ({
@@ -7,11 +6,11 @@ export default registerAs('database', () => ({
   port: process.env.DB_PORT || 5432,
   name: process.env.DB_NAME,
   username: process.env.DB_USERNAME,
-   ssl: { 
-    rejectUnauthorized: false, 
+  ssl: {
+    rejectUnauthorized: false,
   },
   password: process.env.DB_PASSWORD,
-   synchronize:
+  synchronize:
     process.env.DB_SYNC !== undefined
       ? process.env.DB_SYNC === 'true'
       : process.env.NODE_ENV !== 'production',
@@ -20,6 +19,3 @@ export default registerAs('database', () => ({
       ? process.env.DB_AUTO_LOAD === 'true'
       : true,
 }));
-
-
-

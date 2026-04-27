@@ -32,6 +32,6 @@ import { BcryptProvider } from '../provider/bcrypt.provider';
       }),
     }),
   ],
-  exports: [UserService],
+  exports: [UserService, HashingProvider],
 })
 export class UserModule {}
